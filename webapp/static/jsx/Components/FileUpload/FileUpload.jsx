@@ -22,7 +22,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
             file.name
         )
         console.log(formData)
-        axios.post('http://127.0.0.1:5000/upload', formData)
+        axios.post('https://ned-web-app.herokuapp.com/upload', formData)
             .then((res) => {
                 file.isUploading = false;
                 setFiles([...files, file])
@@ -36,7 +36,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
         }
 
     const deleteFileHandler = (_name) => {
-        axios.delete(`http://127.0.0.1:5000/upload/${_name}`)
+        axios.delete(`https://ned-web-app.herokuapp.com/upload/${_name}`)
         .then((res) => removeFile(_name))
         .catch((err) => console.error(err));
     }
@@ -54,7 +54,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
                         Upload
                     </button>
                 </div>
-                <p className="input"><a href={"http://127.0.0.1:5000/uploads/upload_template.csv"}>Download Template File</a></p>
+                <p className="input"><a href={"https://ned-web-app.herokuapp.com/uploads/upload_template.csv"}>Download Template File</a></p>
                 <ul className="file-list">
                     {
                         files &&

@@ -10,10 +10,10 @@ const Notebook = ({notebook}) => {
     <div className='render'>
       <div className='notebook'>
         {/* <img src={ {image} } alt="Notebook" /> */}
-        <img src={`http://127.0.0.1:5000/render/${filename}`} alt="Notebook" />
+        <img src={`https://ned-web-app.herokuapp.com/render/${filename}`} alt="Notebook" />
         {!notebook[0].isUploading &&
                 <button>
-                <a href={`http://127.0.0.1:5000/downloads/${filename}`}>Download</a>
+                <a href={`https://ned-web-app.herokuapp.com//downloads/${filename}`}>Download</a>
               </button>
               }
       </div>

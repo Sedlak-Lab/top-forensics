@@ -4,7 +4,7 @@ import './Notebook.scss'
 const InitialBook = () => {
   return (
     <div className='notebook'>
-      <img src={`http://127.0.0.1:5000/render/initial`} alt="Notebook" />
+      <img src={`https://ned-web-app.herokuapp.com/render/initial`} alt="Notebook" />
     </div>
   )
 }

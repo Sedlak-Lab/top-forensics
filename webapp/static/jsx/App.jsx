@@ -34,9 +34,6 @@ function App() {
           <FileUpload files={files} setFiles = {setFiles} removeFile={removeFile} />
         </div>
         <div className='Notebook'>
-          {/* {if (files === undefined || files.length == 0) {
-} <Notebook notebook={files} />} */}
-          {/* {files && <Notebook notebook={files} />} */}
           {Array.isArray(files) && files.length ? <Notebook notebook={files} /> : <InitialBook />}
         </div>
     </div>
