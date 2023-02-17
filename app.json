@@ -1,0 +1,11 @@
+{
+    "environments": {
+      "review": {
+        "buildpacks": [
+          {
+            "url": "heroku/python"
+          }
+        ]
+      }
+    }
+  }

@@ -1,0 +1,36 @@
+.render {
+    display: flex;
+}
+.notebook {
+    display: flex;
+    height: 500px;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    height: 500px;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    padding: 5px 5px;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #fff;
+    background-color: #f55e30;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    // padding: 1em;
+    transition: background-color 0.4s;
+    box-shadow: 0px 8px 24px rgba(149, 157, 165, 0.5);
+} 

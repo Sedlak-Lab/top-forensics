@@ -1,0 +1,14 @@
+@import "~bootstrap/scss/bootstrap";
+
+.title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: left;
+}
+
+.view {
+  display: flex;
+  flex-direction: row;
+}
