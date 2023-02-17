@@ -3,15 +3,11 @@
   "node": "v16.13.1",
   "npm": "9.2.0"
 },
-  "name": "fullstack_app_boilerplate",
+  "name": "pfas_forensics_web_app",
   "version": "1.0.0",
   "description": "",
   "main": "index.jsx",
-  "keywords": [
-    "flask",
-    "react",
-    "webpack"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
