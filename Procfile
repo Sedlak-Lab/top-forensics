@@ -1,1 +1,1 @@
-web: npm install && npm run build && python webapp/server/server.py
+web: npm install && npm run build && python webapp/server/server.py gunicorn --bind :$PORT
