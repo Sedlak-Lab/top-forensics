@@ -43,7 +43,7 @@ def allowed_file(filename):
 @app.route("/upload", methods=["POST"])
 def upload():
     if not os.path.isdir(UPLOAD_FOLDER):
-        os.mkdir(UPLOAD_FOLDER)
+        os.mkdirs(UPLOAD_FOLDER)
     if request.method == "POST":
         if 'newFile' not in request.files:
             logger.info("No file part")
