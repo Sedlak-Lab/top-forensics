@@ -10,6 +10,8 @@ from matplotlib.patches import Patch
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 import os
+import sys
+import re
 
 import pandas as pd
 import numpy as np
@@ -81,10 +83,16 @@ def confidence_ellipse(x, y, ax, n_std=3.0, facecolor='none', **kwargs):
 def fitting():
     scipy.misc.comb = comb
     print(os.getcwd())
+    sys.stdout.flush()
     dir_path = os.path.dirname(os.path.realpath(__file__))
     print(dir_path)
+    sys.stdout.flush()
 
-    pre_delta = pd.read_csv('./static_files/files/TOPdata_webfig_20221212.csv')
+    filepath = os.path.join(
+        os.getcwd(), '/static_files/files', 'TOPdata_webfig_20221212.csv')
+
+    # pre_delta = pd.read_csv('./static_files/files/TOPdata_webfig_20221212.csv')
+    pre_delta = pd.read_csv(filepath)
 
     # perform row-wise transformation
     pre_delta_hell = pd.concat([pre_delta.loc[:, ['pfas_source', 'pfas_source_matrix']], pre_delta.loc[:, 'prePFBA':].apply(
@@ -119,7 +127,13 @@ def fitting():
 
 def checkformat(file):
     print(file)
-    df = pd.read_csv(file)
+    sys.stdout.flush()
+    name = re.findall(r"(.+).csv", file)[0]
+    name = name + ".csv"
+    filepath = os.path.join(
+        os.getcwd(), '/static_files/files', name)
+    # df = pd.read_csv(file)
+    df = pd.read_csv(filepath)
     if not all(df.columns == ['sample', 'prePFBA', 'prePFPeA', 'prePFHxA', 'prePFHpA', 'prePFOA',
        'prePFNA', 'prePFBS', 'prePFHxS', 'prePFOS', 'dPFBA', 'dPFPeA',
                               'dPFHxA', 'dPFHpA', 'dPFOA', 'dPFNA']):
@@ -134,8 +148,10 @@ def userplot(file):
     scipy.misc.comb = comb
 
     pre_delta_hell_pca, pre_delta_hell_pca_var1, pre_delta_hell_pca_var2 = fitting()
-
-    model = pickle.load(open('./static_files/models/model.pkl', 'rb'))
+    filepath = os.path.join(
+        os.getcwd(), '/static_files/models', 'model.pkl')
+    # model = pickle.load(open('./static_files/models/model.pkl', 'rb'))
+    model = pickle.load(open(filepath, 'rb'))
     user_samples = pd.read_csv(file)
     scaler = model[0]
     pca = model[1]
