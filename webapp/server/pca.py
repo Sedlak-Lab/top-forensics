@@ -1,5 +1,4 @@
 from adjustText import adjust_text
-from PIL import Image
 import pickle
 import plotly as px
 from matplotlib.lines import Line2D
@@ -10,6 +9,7 @@ import seaborn as sns
 from matplotlib.patches import Patch
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
+import os
 
 import pandas as pd
 import numpy as np
@@ -80,6 +80,9 @@ def confidence_ellipse(x, y, ax, n_std=3.0, facecolor='none', **kwargs):
 
 def fitting():
     scipy.misc.comb = comb
+    print(os.getcwd())
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    print(dir_path)
 
     pre_delta = pd.read_csv('./static_files/files/TOPdata_webfig_20221212.csv')
 
@@ -249,14 +252,3 @@ def userplot(file):
 
     ax.legend(handles=legend_elements, fontsize=20)
     return fig
-    # return fig2img(fig)
-
-
-def fig2img(fig):
-    """Convert a Matplotlib figure to a PIL Image and return it"""
-    import io
-    buf = io.BytesIO()
-    fig.savefig(buf)
-    buf.seek(0)
-    img = Image.open(buf)
-    return img

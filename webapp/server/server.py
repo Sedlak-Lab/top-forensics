@@ -56,6 +56,7 @@ def upload():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            logger.info("Upload successful!")
             # return redirect(url_for('download_file', name=filename))
             return redirect(f"render/{filename}", code=303)
     return {
@@ -72,7 +73,7 @@ def render_notebook(name):
     name = re.findall(r"(.+).csv", name)[0]
     name = name + ".jpg"
     # logger.info(checkformat(file))
-    logger.info(file)
+    logger.info(name)
     if checkformat(file) == False:
         return redirect(request.url, code=406)
     fig = userplot(file)
