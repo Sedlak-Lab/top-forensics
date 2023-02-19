@@ -11,11 +11,15 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 import os
 import re
+import logging
 
 import pandas as pd
 import numpy as np
 from scipy.special import comb
 import scipy.misc
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger('Logging')
 
 
 def confidence_ellipse(x, y, ax, n_std=3.0, facecolor='none', **kwargs):
@@ -85,6 +89,12 @@ def fitting():
     # dir_path = os.path.dirname(os.path.realpath(__file__))
     # print(dir_path)
 
+    logger.info("Fitting Line 1 ------")
+    logger.info("Dir path:")
+    logger.info(os.path.dirname(os.path.realpath(__file__)))
+    logger.info("Current Dir: ")
+    logger.info(os.getcwd())
+
     pre_delta = pd.read_csv(
         '/app/webapp/server/static_files/files/TOPdata_webfig_20221212.csv')
 
@@ -120,8 +130,14 @@ def fitting():
 
 
 def checkformat(file):
+    logger.info("Check format ----- line 1------")
+    logger.infor(file)
     name = re.findall(r"(.+).csv", file)[0]
     name = name + ".csv"
+    logger.info("Name :")
+    logger.info(name)
+    logger.info("Current directory:")
+    logger.info(os.getcwd())
     path = os.path.join('/app/webapp/server/static_files/files/', name)
     df = pd.read_csv(path)
     if not all(df.columns == ['sample', 'prePFBA', 'prePFPeA', 'prePFHxA', 'prePFHpA', 'prePFOA',
@@ -136,6 +152,8 @@ def checkformat(file):
 
 def userplot(file):
     scipy.misc.comb = comb
+
+    logger.info("Userplot ---- Line1")
 
     pre_delta_hell_pca, pre_delta_hell_pca_var1, pre_delta_hell_pca_var2 = fitting()
 

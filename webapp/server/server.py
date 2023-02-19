@@ -67,12 +67,15 @@ def upload():
 
 @app.route('/render/<name>', methods=["GET"])
 def render_notebook(name):
+    logger.info("Rnder Notebooke ------Line------")
     logger.info(name)
     file = os.path.join(app.config["UPLOAD_FOLDER"], name)
+    logger.info("File path: ")
     logger.info(file)
     name = re.findall(r"(.+).csv", name)[0]
     name = name + ".jpg"
     # logger.info(checkformat(file))
+    logger.info("Name: ")
     logger.info(name)
     if checkformat(file) == False:
         return redirect(request.url, code=406)
