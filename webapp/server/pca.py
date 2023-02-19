@@ -132,13 +132,13 @@ def fitting():
 def checkformat(file):
     logger.info("Check format ----- line 1------")
     logger.info(file)
-    name = re.findall(r"(.+).csv", file)[0]
-    name = name + ".csv"
-    logger.info("Name :")
-    logger.info(name)
+    filename = re.match(r"[^/]+(?=/$|$)", file)
+    logger.info("File name :")
+    logger.info(filename)
     logger.info("Current directory:")
     logger.info(os.getcwd())
-    path = os.path.join('/app/webapp/server/static_files/files/', name)
+    path = os.path.join(
+        os.getcwd(), '/webapp/server/static_files/files', filename)
     df = pd.read_csv(path)
     if not all(df.columns == ['sample', 'prePFBA', 'prePFPeA', 'prePFHxA', 'prePFHpA', 'prePFOA',
        'prePFNA', 'prePFBS', 'prePFHxS', 'prePFOS', 'dPFBA', 'dPFPeA',
