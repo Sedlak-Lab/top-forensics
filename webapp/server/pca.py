@@ -132,7 +132,7 @@ def fitting():
 def checkformat(file):
     logger.info("Check format ----- line 1------")
     logger.info(file)
-    filename = re.findall(r"[^/]+(?=/$|$)", file)
+    filename = re.findall(r"[^/]+(?=/$|$)", file)[0]
     logger.info("File name :")
     logger.info(filename)
     logger.info("Current directory:")
