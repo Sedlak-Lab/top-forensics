@@ -137,8 +137,8 @@ def checkformat(file):
     logger.info(filename)
     logger.info("Current directory:")
     logger.info(os.getcwd())
-    path = os.path.join(
-        os.getcwd(), '/webapp/server/static_files/files', filename)
+    path = os.path.join('/app/webapp/server/static_files/files', filename)
+    logger.info(path)
     df = pd.read_csv(path)
     if not all(df.columns == ['sample', 'prePFBA', 'prePFPeA', 'prePFHxA', 'prePFHpA', 'prePFOA',
        'prePFNA', 'prePFBS', 'prePFHxS', 'prePFOS', 'dPFBA', 'dPFPeA',
