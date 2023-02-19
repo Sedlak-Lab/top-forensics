@@ -131,7 +131,7 @@ def fitting():
 
 def checkformat(file):
     logger.info("Check format ----- line 1------")
-    logger.infor(file)
+    logger.info(file)
     name = re.findall(r"(.+).csv", file)[0]
     name = name + ".csv"
     logger.info("Name :")
