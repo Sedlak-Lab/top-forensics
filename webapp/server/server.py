@@ -13,10 +13,10 @@ matplotlib.use('Agg')
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('Logging')
 
-UPLOAD_FOLDER = './static_files/files'
-IMAGE_FOLDER = './static_files/files/images'
+UPLOAD_FOLDER = '/app/webapp/server/static_files/files'
+IMAGE_FOLDER = '/app/webapp/server/static_files/files/images'
 ALLOWED_EXTENSIONS = {'csv'}
-STATIC_FILES = './static_files'
+STATIC_FILES = '/app/webapp/server/static_files'
 
 # static folder contains the js/css/img files to be distributed to client
 # template folder contains the html templates to be rendered by Flask
