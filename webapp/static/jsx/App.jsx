@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
     <Navbar bg="light" variant='light'>
-      <Container className='mx-20 my-10'>
+      <Container className='mx-15 my-10'>
         <Navbar.Brand href='#home'>PFAS Forensics Using the TOP Assay</Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="#home">Home</Nav.Link>
