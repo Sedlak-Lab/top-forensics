@@ -12,7 +12,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
         console.log(file)
         if(!file) return;
         file.isUploading = true;
-        setFiles([...files, file])
+        setFiles(file)
 
         // upload file
         const formData = new FormData();
@@ -25,7 +25,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
         axios.post('https://ned-web-app.herokuapp.com/upload', formData)
             .then((res) => {
                 file.isUploading = false;
-                setFiles([...files, file])
+                setFiles(file)
             })
             .catch((err) => {
                 // inform the user
