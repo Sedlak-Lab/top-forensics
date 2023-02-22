@@ -1,1 +1,1 @@
-web: npm install && npm run build && python webapp/server/server.py gunicorn -b 0.0.0.0:$PORT cd webapp/server; server:app
+web: npm install && npm run build && python webapp/server/server.py gunicorn --workers=2 -b 0.0.0.0:$PORT cd webapp/server; server:app --port=$PORT
