@@ -14,7 +14,7 @@ function App() {
   console.log(files)
   
   const removeFile = (filename) => {
-    setFiles(files.filter((file => file.name !== filename)))
+    setFiles([])
   }
 
 
