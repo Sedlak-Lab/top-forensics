@@ -12,6 +12,7 @@ from sklearn.decomposition import PCA
 import os
 import re
 import logging
+from werkzeug.utils import secure_filename
 
 import pandas as pd
 import numpy as np
@@ -133,6 +134,7 @@ def checkformat(file):
     logger.info("Check format ----- line 1------")
     logger.info(file)
     filename = re.findall(r"[^/]+(?=/$|$)", file)[0]
+    filename = secure_filename(filename)
     logger.info("File name :")
     logger.info(filename)
     logger.info("Current directory:")
@@ -159,6 +161,12 @@ def userplot(file):
 
     model = pickle.load(
         open('/app/webapp/server/static_files/models/model.pkl', 'rb'))
+    filename = re.findall(r"[^/]+(?=/$|$)", file)[0]
+    filename = secure_filename(filename)
+    logger.info("File name :")
+    logger.info(filename)
+    logger.info("Current directory:")
+    path = os.path.join('/app/webapp/server/static_files/files', filename)
     user_samples = pd.read_csv(file)
     scaler = model[0]
     pca = model[1]

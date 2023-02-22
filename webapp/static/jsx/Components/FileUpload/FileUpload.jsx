@@ -27,14 +27,14 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
         console.log(formData)
         axios.post('https://ned-web-app.herokuapp.com/upload', formData)
             .then((res) => {
-                if (res.status === 200) {
-                    file.isUploading = false;
-                    setFiles([file])
-                } else if (res.status === 202) {
+                if (res.status === 202) {
                     console.log("Wrong Format")
                     setShow(true)
                     file.isUploading = false;
                     deleteFileHandler(file.name)
+                } else {
+                    file.isUploading = false;
+                    setFiles([file])
                 }
             })
             .catch((err) => {

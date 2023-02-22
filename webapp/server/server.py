@@ -55,10 +55,9 @@ def upload():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            logger.info(os.getcwd())
+            logger.info(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             logger.info("Upload successful!")
-            # return redirect(url_for('download_file', name=filename))
             return redirect(f"render/{filename}", code=303)
     return {
         "result": False,
@@ -68,14 +67,13 @@ def upload():
 
 @app.route('/render/<name>', methods=["GET"])
 def render_notebook(name):
-    logger.info("Rnder Notebooke ------Line------")
+    logger.info("Render Notebooke ------Line------")
     logger.info(name)
     file = os.path.join(app.config["UPLOAD_FOLDER"], name)
     logger.info("File path: ")
     logger.info(file)
     name = re.findall(r"(.+).csv", name)[0]
     name = name + ".jpg"
-    # logger.info(checkformat(file))
     logger.info("Name: ")
     logger.info(name)
     if checkformat(file) == False:
@@ -83,7 +81,6 @@ def render_notebook(name):
     fig = userplot(file)
     fig.savefig(os.path.join(
         app.config["IMAGE_FOLDER"], name))
-    # return redirect(url_for(app.config['STATIC_FILES'], filename="files/images/" + name))
     return send_from_directory(app.config['STATIC_FILES'], "files/images/" + name)
 
 
@@ -101,7 +98,6 @@ def downloads(name):
 
 @app.route('/render/initial', methods=["GET"])
 def initial_chart():
-    # return redirect(url_for(app.config['STATIC_FILES'], filename="files/images/TOPdata_webfig_20221212.jpg"))
     return send_from_directory(app.config['STATIC_FILES'], "files/images/TOPdata_webfig_20221212.jpg")
 
 
@@ -118,4 +114,3 @@ def delete(name):
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
-    # app.run(host='0.0.0.0')
