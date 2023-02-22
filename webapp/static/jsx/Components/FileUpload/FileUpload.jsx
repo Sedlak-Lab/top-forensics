@@ -4,15 +4,18 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import './FileUpload.scss'
 import axios from 'axios'
 import FileItem from "./../FileItem/FileItem"
+import Alert from 'react-bootstrap/Alert';
 
 const FileUpload = ({ files, setFiles, removeFile }) => {
+    const [show, setShow] = useState(false)
+
     const uploadHandler = (event) => {
         const file = event.target.files[0];
         event.target.value = "";
         console.log(file)
         if(!file) return;
         file.isUploading = true;
-        setFiles(file)
+        setFiles([file])
 
         // upload file
         const formData = new FormData();
@@ -24,8 +27,15 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
         console.log(formData)
         axios.post('https://ned-web-app.herokuapp.com/upload', formData)
             .then((res) => {
-                file.isUploading = false;
-                setFiles(file)
+                if (res.status === 200) {
+                    file.isUploading = false;
+                    setFiles([file])
+                } else if (res.status === 202) {
+                    console.log("Wrong Format")
+                    setShow(true)
+                    file.isUploading = false;
+                    deleteFileHandler(file.name)
+                }
             })
             .catch((err) => {
                 // inform the user
@@ -55,6 +65,15 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
                     </button>
                 </div>
                 <p className="input"><a href={"https://ned-web-app.herokuapp.com/uploads/upload_template.csv"}>Download Template File</a></p>
+                {
+                        show && 
+                              <Alert variant="danger" onClose={() => setShow(false)} dismissible bsPrefix='alert'>
+                                <Alert.Heading>Wrong Format!</Alert.Heading>
+                                <p>
+                                  Please download the template and upload in molar units again.
+                                </p>
+                              </Alert>
+                    }
                 <ul className="file-list">
                     {
                         files &&

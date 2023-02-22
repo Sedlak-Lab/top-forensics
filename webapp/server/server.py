@@ -79,7 +79,7 @@ def render_notebook(name):
     logger.info("Name: ")
     logger.info(name)
     if checkformat(file) == False:
-        return redirect(request.url, code=406)
+        return redirect(request.url, code=202)
     fig = userplot(file)
     fig.savefig(os.path.join(
         app.config["IMAGE_FOLDER"], name))

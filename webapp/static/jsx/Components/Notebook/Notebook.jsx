@@ -13,7 +13,7 @@ const Notebook = ({notebook}) => {
         <img src={`https://ned-web-app.herokuapp.com/render/${filename}`} alt="Notebook" />
         {!notebook[0].isUploading &&
                 <button>
-                <a href={`https://ned-web-app.herokuapp.com//downloads/${filename}`}>Download</a>
+                <a href={`https://ned-web-app.herokuapp.com/downloads/${filename}`}>Download</a>
               </button>
               }
       </div>

@@ -10,7 +10,7 @@ import InitialBook from './Components/Notebook/Initialbook';
 
 function App() {
 
-  const [files, setFiles] = useState()
+  const [files, setFiles] = useState([])
   console.log(files)
   
   const removeFile = (filename) => {
