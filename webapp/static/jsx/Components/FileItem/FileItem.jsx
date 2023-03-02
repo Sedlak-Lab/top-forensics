@@ -10,7 +10,7 @@ const FileItem = ({ file, deleteFile }) => {
             <li
                 className="file-item"
                 key={file.name}>
-                <a href={`https://ned-web-app.herokuapp.com//downloads/${file.name}`}>{file.name}</a>
+                <a href={`https://ned-web-app.herokuapp.com/downloads/${file.name}`}>{file.name}</a>
                 <div className="actions">
                     <div className="loading"></div>
                     {file.isUploading && <FontAwesomeIcon

@@ -9,7 +9,7 @@ import Alert from 'react-bootstrap/Alert';
 const FileUpload = ({ files, setFiles, removeFile }) => {
     const [show, setShow] = useState(false)
 
-    const uploadHandler = (event) => {
+    async function uploadHandler(event) {
         const file = event.target.files[0];
         event.target.value = "";
         console.log(file)
@@ -25,7 +25,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
             file.name
         )
         console.log(formData)
-        axios.post('https://ned-web-app.herokuapp.com/upload', formData)
+        await axios.post('https://ned-web-app.herokuapp.com/upload', formData)
             .then((res) => {
                 if (res.status === 202) {
                     console.log("Wrong Format")
@@ -45,8 +45,8 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
             console.log(formData)
         }
 
-    const deleteFileHandler = (_name) => {
-        axios.delete(`https://ned-web-app.herokuapp.com/upload/${_name}`)
+    async function deleteFileHandler(_name) {
+        await axios.delete(`https://ned-web-app.herokuapp.com/upload/${_name}`)
         .then((res) => removeFile(_name))
         .catch((err) => console.error(err));
     }

@@ -1,5 +1,17 @@
 @import "~bootstrap/scss/bootstrap";
 
+.alert {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+
+    button {
+        box-shadow: none;
+    }
+}
+
 .file-card {
     padding: 3em 3em;
     display: flex;
@@ -9,17 +21,17 @@
     min-width: 400px;
     min-height: 100vh;
 
-    .alert {
-        display: flex;
-        flex-direction: column;
-        align-content: flex-start;
-        justify-content: flex-start;
-        align-items: center;
+    // .alert {
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-content: flex-start;
+    //     justify-content: flex-start;
+    //     align-items: center;
 
-        button {
-            box-shadow: none;
-        }
-    }
+    //     button {
+    //         box-shadow: none;
+    //     }
+    // }
 
     .file-inputs {
         position: relative;
