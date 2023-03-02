@@ -141,15 +141,18 @@ def checkformat(file):
     logger.info(os.getcwd())
     path = os.path.join('/app/webapp/server/static_files/files', filename)
     logger.info(path)
-    df = pd.read_csv(path)
-    if not all(df.columns == ['sample', 'prePFBA', 'prePFPeA', 'prePFHxA', 'prePFHpA', 'prePFOA',
-       'prePFNA', 'prePFBS', 'prePFHxS', 'prePFOS', 'dPFBA', 'dPFPeA',
-                              'dPFHxA', 'dPFHpA', 'dPFOA', 'dPFNA']):
-        return False
-    elif (df.iloc[:, 1:].values < 0).any() == True:
-        return False
+    if os.path.isfile(path):
+        df = pd.read_csv(path)
+        if not all(df.columns == ['sample', 'prePFBA', 'prePFPeA', 'prePFHxA', 'prePFHpA', 'prePFOA',
+                                  'prePFNA', 'prePFBS', 'prePFHxS', 'prePFOS', 'dPFBA', 'dPFPeA',
+                                  'dPFHxA', 'dPFHpA', 'dPFOA', 'dPFNA']):
+            return False
+        elif (df.iloc[:, 1:].values < 0).any() == True:
+            return False
+        else:
+            return True
     else:
-        return True
+        return False
 
 
 def userplot(file):

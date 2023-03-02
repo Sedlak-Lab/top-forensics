@@ -69,6 +69,8 @@ def upload():
 def render_notebook(name):
     logger.info("Render Notebooke ------Line------")
     logger.info(name)
+    name = secure_filename(name)
+    logger.info("Secured name in render notebook")
     file = os.path.join(app.config["UPLOAD_FOLDER"], name)
     logger.info("File path: ")
     logger.info(file)
@@ -86,11 +88,13 @@ def render_notebook(name):
 
 @app.route('/uploads/<name>', methods=["GET"])
 def retrieve(name):
+    name = secure_filename(name)
     return send_from_directory(app.config["UPLOAD_FOLDER"], name)
 
 
 @app.route('/downloads/<name>', methods=["GET"])
 def downloads(name):
+    name = secure_filename(name)
     name = re.findall(r"(.+).csv", name)[0]
     name = name + ".jpg"
     return send_from_directory(app.config["IMAGE_FOLDER"], name, as_attachment=True)
@@ -103,6 +107,11 @@ def initial_chart():
 
 @app.route("/upload/<name>", methods=["DELETE"])
 def delete(name):
+    logger.info("Inside delete -----")
+    logger.info(name)
+    name = secure_filename(name)
+    logger.info("Secured name in Delete")
+    logger.info(name)
     file = os.path.join(app.config["UPLOAD_FOLDER"], name)
     os.remove(file)
     return {

@@ -14,6 +14,7 @@ function App() {
   const [files, setFiles] = useState([])
   const [showAbout, setshowAbout] = useState(false)
   console.log(files)
+  const file = files[0]
   
   const removeFile = (filename) => {
     setFiles([])
@@ -45,7 +46,7 @@ function App() {
                                 </p>
                               </Alert> :
                               <div className='Notebook'>
-          {Array.isArray(files) && files.length ? <Notebook notebook={files} /> : <InitialBook />}
+          {Array.isArray(files) && files.length && !file.isUploading ? <Notebook notebook={files} /> : <InitialBook />}
         </div>
           }
     </div>

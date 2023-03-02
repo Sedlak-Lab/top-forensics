@@ -9,19 +9,13 @@ const Notebook = ({notebook}) => {
   return (
     <div className='render'>
       <div className='notebook'>
-        {/* <img src={ {image} } alt="Notebook" /> */}
-        <img src={`https://ned-web-app.herokuapp.com/render/${filename}`} alt="Notebook" />
+        <img src={`https://ned-web-app.herokuapp.com/render/${filename}?${Date.now()}`} alt="Notebook" />
         {!notebook[0].isUploading &&
                 <button>
                 <a href={`https://ned-web-app.herokuapp.com/downloads/${filename}`}>Download</a>
               </button>
               }
       </div>
-      {/* <div className="download">
-        <button>
-          Download
-        </button>
-      </div> */}
     </div>
   )
 }
