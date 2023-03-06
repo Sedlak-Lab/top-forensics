@@ -43,6 +43,8 @@ function App() {
                                 <p>
                                 This research was funded by the Strategic Environmental Research and Development Program (SERDP ER-1330). 
                                 If you have questions or would like to contribute TOP data, please email David Sedlak at sedlak@berkeley.edu.
+                                 The web app was developed by Jacob T. Kim in collaboration with Edmund Antell and David Sedlak. 
+                                 For complete documentation, visit our GitHub page at <a href="https://github.com/Sedlak-Lab/top-forensics">https://github.com/Sedlak-Lab/top-forensics</a>.
                                 </p>
                               </Alert> :
                               <div className='Notebook'>

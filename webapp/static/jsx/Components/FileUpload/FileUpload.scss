@@ -21,18 +21,6 @@
     min-width: 400px;
     min-height: 100vh;
 
-    // .alert {
-    //     display: flex;
-    //     flex-direction: column;
-    //     align-content: flex-start;
-    //     justify-content: flex-start;
-    //     align-items: center;
-
-    //     button {
-    //         box-shadow: none;
-    //     }
-    // }
-
     .file-inputs {
         position: relative;
         margin-bottom: 1.5em;
@@ -70,7 +58,6 @@
             border-radius: 4px;
             border: none;
             outline: none;
-            // padding: 1em;
             transition: background-color 0.4s;
             box-shadow: 0px 8px 24px rgba(149, 157, 165, 0.5);
 

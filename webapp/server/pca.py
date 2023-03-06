@@ -143,11 +143,13 @@ def checkformat(file):
     logger.info(path)
     if os.path.isfile(path):
         df = pd.read_csv(path)
+        if df.shape[1] != 16:
+            return False
         if not all(df.columns == ['sample', 'prePFBA', 'prePFPeA', 'prePFHxA', 'prePFHpA', 'prePFOA',
                                   'prePFNA', 'prePFBS', 'prePFHxS', 'prePFOS', 'dPFBA', 'dPFPeA',
                                   'dPFHxA', 'dPFHpA', 'dPFOA', 'dPFNA']):
             return False
-        elif (df.iloc[:, 1:].values < 0).any() == True:
+        if (df.iloc[:, 1:].values < 0).any() == True:
             return False
         else:
             return True

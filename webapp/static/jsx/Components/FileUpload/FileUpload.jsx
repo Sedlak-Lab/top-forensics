@@ -17,7 +17,6 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
         file.isUploading = true;
         setFiles([file])
 
-        // upload file
         const formData = new FormData();
         formData.append(
             "newFile",
@@ -25,7 +24,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
             file.name
         )
         console.log(formData)
-        await axios.post('https://ned-web-app.herokuapp.com/upload', formData)
+        await axios.post('https://top-forensics.herokuapp.com/upload', formData)
             .then((res) => {
                 if (res.status === 202) {
                     console.log("Wrong Format")
@@ -38,7 +37,6 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
                 }
             })
             .catch((err) => {
-                // inform the user
                 console.error(err)
                 removeFile(file.name)
             });
@@ -46,7 +44,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
         }
 
     async function deleteFileHandler(_name) {
-        await axios.delete(`https://ned-web-app.herokuapp.com/upload/${_name}`)
+        await axios.delete(`https://top-forensics.herokuapp.com/upload/${_name}`)
         .then((res) => removeFile(_name))
         .catch((err) => console.error(err));
     }
@@ -64,7 +62,7 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
                         Upload
                     </button>
                 </div>
-                <p className="input"><a href={"https://ned-web-app.herokuapp.com/uploads/upload_template.csv"}>Download Template File</a></p>
+                <p className="input"><a href={"https://top-forensics.herokuapp.com/uploads/upload_template.csv"}>Download Template File</a></p>
                 {
                         show && 
                               <Alert variant="danger" onClose={() => setShow(false)} dismissible bsPrefix='alert'>
@@ -84,9 +82,6 @@ const FileUpload = ({ files, setFiles, removeFile }) => {
                     }
                 </ul>
             </div>
-            {/* <div className="csv">
-                {<CSVReader file={files}/>}
-            </div> */}
         </div>
     )
 }
