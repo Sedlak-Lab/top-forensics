@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import './FileUpload.scss'
 import axios from 'axios'
-import FileItem from "./../FileItem/FileItem"
+import FileItem from "../FileItem/FileItem"
 import Alert from 'react-bootstrap/Alert';
 
 const FileUpload = ({ files, setFiles, removeFile }) => {

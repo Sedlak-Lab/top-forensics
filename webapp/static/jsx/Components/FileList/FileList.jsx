@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import FileItem from "./../FileItem/FileItem"
+import FileItem from "../FileItem/FileItem"
 
 const FileList = ({ files, removeFile}) => {
     async function deleteFileHandler(_name) {
