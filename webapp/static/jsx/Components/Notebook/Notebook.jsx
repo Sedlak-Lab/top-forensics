@@ -15,7 +15,7 @@ const Notebook = ({notebook}) => {
         {!notebook[0].isUploading && load === true ?
                 <button>
                 <a href={`https://top-forensics.herokuapp.com/downloads/${filename}`}>Download</a>
-              </button> : <div style={{ height: "500px", marginLeft : "500px"}} className="justify-content-center align-items-center">
+              </button> : <div style={{ height: "500px", marginLeft : "100px"}} className="justify-content-center align-items-center">
         <Spinner
           animation="border"
           role="status"
